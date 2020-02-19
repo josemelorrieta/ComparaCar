@@ -9,13 +9,13 @@ public class Coche {
     private int potencia;
     private float consumo;
     private int maletero;
-    private int cilindarada;
+    private int cilindrada;
     private String tipoCombustible;
     private float aceleracion;
-    private int velociedadMax;
+    private int velocidadMax;
 
     public Coche(){ }
-    public Coche(int id,int precio, int puertas, int plazas, int potencia, float consumo, int maletero, int cilindarada, String tipocombustible, float aceleracion, int velociedadMax) {
+    public Coche(int id,int precio, int puertas, int plazas, int potencia, float consumo, int maletero, int cilindrada, String tipocombustible, float aceleracion, int velocidadMax) {
         this.id = id;
         this.precio = precio;
         this.puertas = puertas;
@@ -23,10 +23,10 @@ public class Coche {
         this.potencia = potencia;
         this.consumo = consumo;
         this.maletero = maletero;
-        this.cilindarada = cilindarada;
+        this.cilindrada = cilindrada;
         this.tipoCombustible = tipocombustible;
         this.aceleracion = aceleracion;
-        this.velociedadMax = velociedadMax;
+        this.velocidadMax = velocidadMax;
     }
 
     public int getId() {
@@ -86,11 +86,11 @@ public class Coche {
     }
 
     public int getCilindarada() {
-        return cilindarada;
+        return cilindrada;
     }
 
     public void setCilindarada(int cilindarada) {
-        this.cilindarada = cilindarada;
+        this.cilindrada = cilindarada;
     }
 
     public String getTipocombustible() {
@@ -110,10 +110,10 @@ public class Coche {
     }
 
     public int velociedadMax() {
-        return velociedadMax;
+        return velocidadMax;
     }
 
     public void velociedadMax(int velociedadMax) {
-        this.velociedadMax = velociedadMax;
+        this.velocidadMax = velociedadMax;
     }
 }
