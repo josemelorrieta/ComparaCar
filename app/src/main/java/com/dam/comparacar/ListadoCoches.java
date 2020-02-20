@@ -31,22 +31,20 @@ public class ListadoCoches extends AppCompatActivity {
 
         RecyclerView listaCoches = findViewById(R.id.rvListadoCoches);
 
-        listaCoches.setAdapter(new CochesAdapter(modelo.listadoCoches, this));
+        listaCoches.setAdapter(new CochesAdapter(modelo.listadoCoches));
         listaCoches.setLayoutManager(new LinearLayoutManager(this));
-        listaCoches.setHasFixedSize(true);
-        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-        listaCoches.addItemDecoration(itemDecoration);
+        //listaCoches.setHasFixedSize(true);
+//        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+//        listaCoches.addItemDecoration(itemDecoration);
 
     }
 
     private class CochesAdapter extends RecyclerView.Adapter<CochesAdapter.ViewHolder> {
 
         private ArrayList<Coche> coches;
-        private Context context;
 
-        public CochesAdapter(ArrayList<Coche> coches, Context context) {
+        public CochesAdapter(ArrayList<Coche> coches) {
             this.coches = coches;
-            this.context = context;
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -113,9 +111,8 @@ public class ListadoCoches extends AppCompatActivity {
             // - replace the contents of the view with that element
 
             Coche coche = coches.get(position);
-            //int idImagen = context.getResources().getIdentifier(coche.getImagen() + "jpg", "drawable", context.getPackageName());
-            //holder.imgCoche.setImageResource(idImagen);
-            holder.imgCoche.setImageResource(R.drawable.audia1);
+            int idImagen = getResources().getIdentifier(coche.getImagen() , "drawable", getPackageName());
+            holder.imgCoche.setImageResource(idImagen);
             holder.txtModelo.setText(coche.getModelo());
             holder.txtMotor.setText(coche.getCilindrada() + "cc. / " + coche.getPotencia() + "CV.");
             holder.txtCombustible.setText(coche.getTipoCombustible());

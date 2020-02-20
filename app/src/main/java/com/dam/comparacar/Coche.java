@@ -1,5 +1,8 @@
 package com.dam.comparacar;
 
+import android.graphics.drawable.Drawable;
+import android.media.Image;
+
 public class Coche {
 
     private int id;
@@ -23,20 +26,6 @@ public class Coche {
     private float long2;
 
     public Coche(){ }
-
-    public Coche(int id,int precio, int puertas, int plazas, int potencia, float consumo, int maletero, int cilindrada, String tipoCombustible, float aceleracion, int velocidadMax) {
-        this.id = id;
-        this.precio = precio;
-        this.puertas = puertas;
-        this.plazas = plazas;
-        this.potencia = potencia;
-        this.consumo = consumo;
-        this.maletero = maletero;
-        this.cilindrada = cilindrada;
-        this.tipoCombustible = tipoCombustible;
-        this.aceleracion = aceleracion;
-        this.velocidadMax = velocidadMax;
-    }
 
     public Coche(int id, String modelo,int precio, int puertas, int plazas, int potencia, float consumo, int maletero, int cilindrada, String tipoCombustible, float aceleracion, int velocidadMax, String url, String imagen, String video, float lat1, float long1, float lat2, float long2) {
         this.id = id;
@@ -212,4 +201,5 @@ public class Coche {
     public void setLong2(float long2) {
         this.long2 = long2;
     }
+
 }
