@@ -90,20 +90,29 @@ public class MainActivity extends AppCompatActivity {
         modelo.listadoCoches.add(VolkswagenPassatGte);
         modelo.listadoCoches.add(FordMondeo);
 
-
-        ContentValues registro = new ContentValues();
-        registro.put("id", 1);
-        registro.put("precio", 18000);
-        registro.put("puertas", 4);
-        registro.put("plazas", 5);
-        registro.put("potencia", 100);
-        registro.put("consumo", 6.7);
-        registro.put("maletero", 320);
-        registro.put("cilindrada", 4);
-        registro.put("tipoCombustible", "gasolina");
-        registro.put("aceleracion", 9.5);
-        registro.put("velocidadMax", 220);
-        int res = (int)db.insert("coches", null, registro);
+        for (int i=0;i<modelo.listadoCoches.size();i++) {
+            ContentValues registro = new ContentValues();
+            registro.put("id", i + 1);
+            registro.put("modelo", modelo.listadoCoches.get(i).getModelo());
+            registro.put("precio", modelo.listadoCoches.get(i).getPrecio());
+            registro.put("puertas", modelo.listadoCoches.get(i).getPuertas());
+            registro.put("plazas", modelo.listadoCoches.get(i).getPlazas());
+            registro.put("potencia", modelo.listadoCoches.get(i).getPotencia());
+            registro.put("consumo", modelo.listadoCoches.get(i).getConsumo());
+            registro.put("maletero", modelo.listadoCoches.get(i).getMaletero());
+            registro.put("cilindrada", modelo.listadoCoches.get(i).getCilindrada());
+            registro.put("tipoCombustible", modelo.listadoCoches.get(i).getTipoCombustible());
+            registro.put("aceleracion", modelo.listadoCoches.get(i).getAceleracion());
+            registro.put("velocidadMax", modelo.listadoCoches.get(i).getVelocidadMax());
+            registro.put("url", modelo.listadoCoches.get(i).getUrl());
+            registro.put("imagen", modelo.listadoCoches.get(i).getImagen());
+            registro.put("video", modelo.listadoCoches.get(i).getVideo());
+            registro.put("lat1", modelo.listadoCoches.get(i).getLat1());
+            registro.put("long1", modelo.listadoCoches.get(i).getLong1());
+            registro.put("lat2", modelo.listadoCoches.get(i).getLat2());
+            registro.put("long2", modelo.listadoCoches.get(i).getLong2());
+            int res = (int) db.insert("coches", null, registro);
+        }
         db.close();
     }
 
@@ -113,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
         modelo.listadoCoches.clear();
         Cursor fila = db.rawQuery("Select * from coches", null);
+
         while (fila.moveToNext()) {
             Coche coche = new Coche();
             coche.setId(fila.getInt(0));
@@ -127,11 +137,15 @@ public class MainActivity extends AppCompatActivity {
             coche.setTipoCombustible(fila.getString(9));
             coche.setAceleracion(fila.getFloat(10));
             coche.setVelocidadMax(fila.getInt(11));
-            coche.setLat1(fila.getFloat(12));
-            coche.setLong1(fila.getFloat(13));
-            coche.setLat2(fila.getFloat(14));
-            coche.setLong2(fila.getFloat(15));
+            coche.setUrl(fila.getString(12));
+            coche.setImagen(fila.getString(13));
+            coche.setVideo(fila.getString(14));
+            coche.setLat1(fila.getFloat(15));
+            coche.setLong1(fila.getFloat(16));
+            coche.setLat2(fila.getFloat(17));
+            coche.setLong2(fila.getFloat(18));
             modelo.listadoCoches.add(coche);
+            fila.moveToNext();
         }
 
         db.close();

@@ -113,8 +113,9 @@ public class ListadoCoches extends AppCompatActivity {
             // - replace the contents of the view with that element
 
             Coche coche = coches.get(position);
-            int idImagen = context.getResources().getIdentifier(coche.getImagen() + ".jpg", "drawable", context.getPackageName());
-            holder.imgCoche.setImageResource(idImagen);
+            //int idImagen = context.getResources().getIdentifier(coche.getImagen() + "jpg", "drawable", context.getPackageName());
+            //holder.imgCoche.setImageResource(idImagen);
+            holder.imgCoche.setImageResource(R.drawable.audia1);
             holder.txtModelo.setText(coche.getModelo());
             holder.txtMotor.setText(coche.getCilindrada() + "cc. / " + coche.getPotencia() + "CV.");
             holder.txtCombustible.setText(coche.getTipoCombustible());
