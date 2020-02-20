@@ -85,11 +85,12 @@ public class Coche {
         this.maletero = maletero;
     }
 
-    public int getCilindarada() {
+    public int getCilindrada() {
         return cilindrada;
     }
 
-    public void setCilindarada(int cilindarada) {
+    public void setCilindrada(int cilindarada) {
+
         this.cilindrada = cilindarada;
     }
 
@@ -109,11 +110,11 @@ public class Coche {
         this.aceleracion = aceleracion;
     }
 
-    public int velociedadMax() {
+    public int getVelocidadMax() {
         return velocidadMax;
     }
 
-    public void velociedadMax(int velociedadMax) {
-        this.velocidadMax = velociedadMax;
+    public void setVelocidadMax(int velociedadMax) {
+        this.velocidadMax = velocidadMax;
     }
 }

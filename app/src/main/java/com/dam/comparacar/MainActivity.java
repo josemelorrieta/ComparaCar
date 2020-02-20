@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ActionBar;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
@@ -46,8 +47,12 @@ public class MainActivity extends AppCompatActivity {
         int numFilas = (int)DatabaseUtils.queryNumEntries(db, "coches");
         if (numFilas == 0) {
             cargarDatosEnBD();
+        } else {
+            recuperarDatosDeBD();
         }
+
         db.close();
+
         (new Handler()).postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -98,6 +103,31 @@ public class MainActivity extends AppCompatActivity {
         registro.put("aceleracion", 9.5);
         registro.put("velocidadMax", 220);
         int res = (int)db.insert("coches", null, registro);
+        db.close();
+    }
+
+    private void recuperarDatosDeBD() {
+        AdministradorBDSQLite adminBD = new AdministradorBDSQLite(this, "ComparaCar", null, 1);
+        SQLiteDatabase db = adminBD.getWritableDatabase();
+
+        modelo.listadoCoches.clear();
+        Cursor fila = db.rawQuery("Select * from coches", null);
+        while (fila.moveToNext()) {
+            Coche coche = new Coche();
+            coche.setId(fila.getInt(0));
+            coche.setPrecio(fila.getInt(1));
+            coche.setPuertas(fila.getInt(2));
+            coche.setPlazas(fila.getInt(3));
+            coche.setPotencia(fila.getInt(4));
+            coche.setConsumo(fila.getFloat(5));
+            coche.setMaletero(fila.getInt(6));
+            coche.setCilindrada(fila.getInt(7));
+            coche.setTipocombustible(fila.getString(8));
+            coche.setAceleracion(fila.getFloat(9));
+            coche.setVelocidadMax(fila.getInt(10));
+            modelo.listadoCoches.add(coche);
+        }
+
         db.close();
     }
 }
