@@ -13,9 +13,17 @@ public class Coche {
     private String tipoCombustible;
     private float aceleracion;
     private int velocidadMax;
+    private String url;
+    private String video;
+    private String imagen;
+    private float lat1;
+    private float long1;
+    private float lat2;
+    private float long2;
 
     public Coche(){ }
-    public Coche(int id,int precio, int puertas, int plazas, int potencia, float consumo, int maletero, int cilindrada, String tipocombustible, float aceleracion, int velocidadMax) {
+
+    public Coche(int id,int precio, int puertas, int plazas, int potencia, float consumo, int maletero, int cilindrada, String tipoCombustible, float aceleracion, int velocidadMax) {
         this.id = id;
         this.precio = precio;
         this.puertas = puertas;
@@ -24,9 +32,30 @@ public class Coche {
         this.consumo = consumo;
         this.maletero = maletero;
         this.cilindrada = cilindrada;
-        this.tipoCombustible = tipocombustible;
+        this.tipoCombustible = tipoCombustible;
         this.aceleracion = aceleracion;
         this.velocidadMax = velocidadMax;
+    }
+
+    public Coche(int id,int precio, int puertas, int plazas, int potencia, float consumo, int maletero, int cilindrada, String tipoCombustible, float aceleracion, int velocidadMax, String url, String imagen, String video, float lat1, float long1, float lat2, float long2) {
+        this.id = id;
+        this.precio = precio;
+        this.puertas = puertas;
+        this.plazas = plazas;
+        this.potencia = potencia;
+        this.consumo = consumo;
+        this.maletero = maletero;
+        this.cilindrada = cilindrada;
+        this.tipoCombustible = tipoCombustible;
+        this.aceleracion = aceleracion;
+        this.velocidadMax = velocidadMax;
+        this.url = url;
+        this.imagen = imagen;
+        this.video = video;
+        this.lat1 = lat1;
+        this.lat2 = lat2;
+        this.long1 = long1;
+        this.long2 = long2;
     }
 
     public int getId() {
@@ -94,11 +123,11 @@ public class Coche {
         this.cilindrada = cilindarada;
     }
 
-    public String getTipocombustible() {
+    public String getTipoCombustible() {
         return tipoCombustible;
     }
 
-    public void setTipocombustible(String tipocombustible) {
+    public void setTipoCombustible(String tipocombustible) {
         this.tipoCombustible = tipocombustible;
     }
 
@@ -116,5 +145,61 @@ public class Coche {
 
     public void setVelocidadMax(int velociedadMax) {
         this.velocidadMax = velocidadMax;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getVideo() {
+        return this.video;
+    }
+
+    public void setVideo(String video) {
+        this.video = video;
+    }
+
+    public float getLat1() {
+        return lat1;
+    }
+
+    public void setLat1(float lat1) {
+        this.lat1 = lat1;
+    }
+
+    public float getLong1() {
+        return long1;
+    }
+
+    public void setLong1(float long1) {
+        this.long1 = long1;
+    }
+
+    public float getLat2() {
+        return lat2;
+    }
+
+    public void setLat2(float lat2) {
+        this.lat2 = lat2;
+    }
+
+    public float getLong2() {
+        return long2;
+    }
+
+    public void setLong2(float long2) {
+        this.long2 = long2;
     }
 }

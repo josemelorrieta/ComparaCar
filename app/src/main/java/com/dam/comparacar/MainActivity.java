@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
             coche.setConsumo(fila.getFloat(5));
             coche.setMaletero(fila.getInt(6));
             coche.setCilindrada(fila.getInt(7));
-            coche.setTipocombustible(fila.getString(8));
+            coche.setTipoCombustible(fila.getString(8));
             coche.setAceleracion(fila.getFloat(9));
             coche.setVelocidadMax(fila.getInt(10));
             modelo.listadoCoches.add(coche);
