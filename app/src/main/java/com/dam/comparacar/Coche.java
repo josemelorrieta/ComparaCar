@@ -3,6 +3,7 @@ package com.dam.comparacar;
 public class Coche {
 
     private int id;
+    private String modelo;
     private int precio;
     private int puertas;
     private int plazas;
@@ -37,8 +38,9 @@ public class Coche {
         this.velocidadMax = velocidadMax;
     }
 
-    public Coche(int id,int precio, int puertas, int plazas, int potencia, float consumo, int maletero, int cilindrada, String tipoCombustible, float aceleracion, int velocidadMax, String url, String imagen, String video, float lat1, float long1, float lat2, float long2) {
+    public Coche(int id, String modelo,int precio, int puertas, int plazas, int potencia, float consumo, int maletero, int cilindrada, String tipoCombustible, float aceleracion, int velocidadMax, String url, String imagen, String video, float lat1, float long1, float lat2, float long2) {
         this.id = id;
+        this.modelo = modelo;
         this.precio = precio;
         this.puertas = puertas;
         this.plazas = plazas;
@@ -64,6 +66,14 @@ public class Coche {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getModelo() {
+        return this.modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
     }
 
     public int getPrecio() {
