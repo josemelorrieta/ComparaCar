@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase db = adminBD.getWritableDatabase();
 
         //url video imagen lat,long
-        Coche AudiA1 = new Coche(1,"Audi A1",22400,5,5,115,5.8f,335,999,"gasolina",9.5f,203,"https://www.audi.es/es/web/es/modelos/a1/nuevo-a1-sportback.html#layer=/es/web/es/modelos/a1/nuevo-a1-sportback.engine_compare.gbaas4_2.techdata.html","AudiA1","https://www.youtube.com/watch?v=BQuQ46XM9RE",43.3232022f,-2.9755486f,43.2727254f,-2.9761362f);
+        Coche AudiA1 = new Coche(1,"Audi A1",22400,5,5,115,5.8f,335,999,"gasolina",9.5f,203,"https://www.audi.es/es/web/es/modelos/a1/nuevo-a1-sportback.html#layer=/es/web/es/modelos/a1/nuevo-a1-sportback.engine_compare.gbaas4_2.techdata.html","audia1","https://www.youtube.com/watch?v=BQuQ46XM9RE",43.3232022f,-2.9755486f,43.2727254f,-2.9761362f);
         Coche RenaultClio = new Coche(2,"Renault Clio Intens",13441,5,5,100,5.3f,366,999,"gasolina",14.7f,187,"https://www.renault.es/turismos/clio/equipamientos.html?gradeCode=ENS_MDL2P1SERIELIM3","RenaultClio","https://www.youtube.com/watch?v=3RNZemcJmrs",43.2687133f,-2.9524793f,43.2687743f,-2.98531f);
         Coche OpelCorsa = new Coche(3,"Opel Corsa AT8 GS Line",18800,5,5,131,5.6f,309,1199,"gasolina",8.7f,208,"https://www.opel.es/coches/gama-corsa/corsa/resumen.html","OpelCorsaGSLine","https://www.youtube.com/watch?v=1BnngtGtsxM",43.3184615f,-3.0047965f,43.2742229f,-2.9626327f);
         Coche VolkswagenGolf = new Coche(4,"Volkwagen Golf Life",32430,5,5,150,5.7f,381,1498,"gasolina",8.5f,224,"https://www.volkswagen.es/es/modelos-configurador/golf-8.html","VolkswagenGolfLife","https://www.youtube.com/watch?v=aGBWZhobGkg",43.3212533f,-2.9832281f,43.304587f,-3.0026767f);
@@ -116,16 +116,21 @@ public class MainActivity extends AppCompatActivity {
         while (fila.moveToNext()) {
             Coche coche = new Coche();
             coche.setId(fila.getInt(0));
-            coche.setPrecio(fila.getInt(1));
-            coche.setPuertas(fila.getInt(2));
-            coche.setPlazas(fila.getInt(3));
-            coche.setPotencia(fila.getInt(4));
-            coche.setConsumo(fila.getFloat(5));
-            coche.setMaletero(fila.getInt(6));
-            coche.setCilindrada(fila.getInt(7));
-            coche.setTipoCombustible(fila.getString(8));
-            coche.setAceleracion(fila.getFloat(9));
-            coche.setVelocidadMax(fila.getInt(10));
+            coche.setModelo(fila.getString(1));
+            coche.setPrecio(fila.getInt(2));
+            coche.setPuertas(fila.getInt(3));
+            coche.setPlazas(fila.getInt(4));
+            coche.setPotencia(fila.getInt(5));
+            coche.setConsumo(fila.getFloat(6));
+            coche.setMaletero(fila.getInt(7));
+            coche.setCilindrada(fila.getInt(8));
+            coche.setTipoCombustible(fila.getString(9));
+            coche.setAceleracion(fila.getFloat(10));
+            coche.setVelocidadMax(fila.getInt(11));
+            coche.setLat1(fila.getFloat(12));
+            coche.setLong1(fila.getFloat(13));
+            coche.setLat2(fila.getFloat(14));
+            coche.setLong2(fila.getFloat(15));
             modelo.listadoCoches.add(coche);
         }
 

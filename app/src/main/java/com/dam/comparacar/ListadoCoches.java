@@ -31,7 +31,7 @@ public class ListadoCoches extends AppCompatActivity {
 
         RecyclerView listaCoches = findViewById(R.id.rvListadoCoches);
 
-        listaCoches.setAdapter(new CochesAdapter(modelo.listadoCoches));
+        listaCoches.setAdapter(new CochesAdapter(modelo.listadoCoches, this));
         listaCoches.setLayoutManager(new LinearLayoutManager(this));
         listaCoches.setHasFixedSize(true);
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
@@ -42,9 +42,11 @@ public class ListadoCoches extends AppCompatActivity {
     private class CochesAdapter extends RecyclerView.Adapter<CochesAdapter.ViewHolder> {
 
         private ArrayList<Coche> coches;
+        private Context context;
 
-        public CochesAdapter(ArrayList<Coche> coches) {
+        public CochesAdapter(ArrayList<Coche> coches, Context context) {
             this.coches = coches;
+            this.context = context;
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -81,6 +83,11 @@ public class ListadoCoches extends AppCompatActivity {
         }
 
         @Override
+        public int getItemViewType(int position) {
+            return R.layout.item_list_coche;
+        }
+
+        @Override
         public CochesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             Context context = parent.getContext();
 
@@ -106,6 +113,8 @@ public class ListadoCoches extends AppCompatActivity {
             // - replace the contents of the view with that element
 
             Coche coche = coches.get(position);
+            int idImagen = context.getResources().getIdentifier(coche.getImagen() + ".jpg", "drawable", context.getPackageName());
+            holder.imgCoche.setImageResource(idImagen);
             holder.txtModelo.setText(coche.getModelo());
             holder.txtMotor.setText(coche.getCilindrada() + "cc. / " + coche.getPotencia() + "CV.");
             holder.txtCombustible.setText(coche.getTipoCombustible());
