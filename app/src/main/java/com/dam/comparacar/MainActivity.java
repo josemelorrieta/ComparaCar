@@ -70,15 +70,16 @@ public class MainActivity extends AppCompatActivity {
         AdministradorBDSQLite adminBD = new AdministradorBDSQLite(this, "ComparaCar", null, 1);
         SQLiteDatabase db = adminBD.getWritableDatabase();
 
-        Coche AudiA1 = new Coche(1,22400,5,5,115,5.8f,335,999,"gasolina",9.5f,203);
-        Coche RenaultClio = new Coche(2,13441,5,5,100,5.3f,366,999,"gasolina",14.7f,187);
-        Coche OpelCorsa = new Coche(3,18800,5,5,131,5.6f,309,1199,"gasolina",8.7f,208);
-        Coche VolkswagenGolf = new Coche(4,32430,5,5,150,5.7f,381,1498,"gasolina",8.5f,224);
-        Coche SeatLeon = new Coche(5,23240,5,5,110,4.6f,380,1598,"diesel",10.4f,194);
-        Coche AudiA3  = new Coche(6,30740,5,5,116,5.4f,380,1598,"diesel",10.4f,205);
-        Coche AudiA4 = new Coche(7,41140,5,5,136,5.4f,460,1968,"diesel",9.5f,210);
-        Coche VolkswagenPassatGte = new Coche(8,44895,5,5,115,1.5f,402,1395,"Híbrido",7.4f,225);
-        Coche FordMondeo = new Coche(9,36648,5,5,165,5.6f,550,1498,"Híbrido",10.3f,214);
+        //url video imagen lat,long
+        Coche AudiA1 = new Coche(1,"Audi A1",22400,5,5,115,5.8f,335,999,"gasolina",9.5f,203,"https://www.audi.es/es/web/es/modelos/a1/nuevo-a1-sportback.html#layer=/es/web/es/modelos/a1/nuevo-a1-sportback.engine_compare.gbaas4_2.techdata.html","AudiA1","https://www.youtube.com/watch?v=BQuQ46XM9RE",43.3232022f,-2.9755486f,43.2727254f,-2.9761362f);
+        Coche RenaultClio = new Coche(2,"Renault Clio Intens",13441,5,5,100,5.3f,366,999,"gasolina",14.7f,187,"https://www.renault.es/turismos/clio/equipamientos.html?gradeCode=ENS_MDL2P1SERIELIM3","RenaultClio","https://www.youtube.com/watch?v=3RNZemcJmrs",43.2687133f,-2.9524793f,43.2687743f,-2.98531f);
+        Coche OpelCorsa = new Coche(3,"Opel Corsa AT8 GS Line",18800,5,5,131,5.6f,309,1199,"gasolina",8.7f,208,"https://www.opel.es/coches/gama-corsa/corsa/resumen.html","OpelCorsaGSLine","https://www.youtube.com/watch?v=1BnngtGtsxM",43.3184615f,-3.0047965f,43.2742229f,-2.9626327f);
+        Coche VolkswagenGolf = new Coche(4,"Volkwagen Golf Life",32430,5,5,150,5.7f,381,1498,"gasolina",8.5f,224,"https://www.volkswagen.es/es/modelos-configurador/golf-8.html","VolkswagenGolfLife","https://www.youtube.com/watch?v=aGBWZhobGkg",43.3212533f,-2.9832281f,43.304587f,-3.0026767f);
+        Coche SeatLeon = new Coche(5,"Seat Leon",23240,5,5,110,4.6f,380,1598,"diesel",10.4f,194,"https://www.seat.es/coches/leon-5-puertas/modelo.html","SeatLeon","https://www.youtube.com/watch?v=mJejGouKNZk",43.3041959f,-3.0010919f,43.3282654f,-2.9956114f);
+        Coche AudiA3  = new Coche(6,"Audi A3",30740,5,5,116,5.4f,380,1598,"diesel",10.4f,205,"https://www.audi.es/es/web/es/modelos/a3/a3-sportback.html#layer=/es/web/es/modelos/a3/a3-sportback.engine_compare.8vfadc_1.techdata.html?pid=int:main_page-intro:a3sb_datostecnicos_20mar.html","AudiA3","https://www.youtube.com/watch?v=NxjHis4vB1U",43.3232022f,-2.9755486f,43.2727254f,-2.9761362f);
+        Coche AudiA4 = new Coche(7,"Audi A4",41140,5,5,136,5.4f,460,1968,"diesel",9.5f,210,"https://www.audi.es/es/web/es/modelos/a4/a4.html#layer=/es/web/es/modelos/a4/a4.engine_compare.8wcbyg_2_gyehyeh.techdata.html","AudiA4","https://www.youtube.com/watch?v=Bb76E7FbhDY",43.3232022f,-2.9755486f,43.2727254f,-2.9761362f);
+        Coche VolkswagenPassatGte = new Coche(8,"Volkswagen Passat GTE",44895,5,5,115,1.5f,402,1395,"Híbrido",7.4f,225,"https://www.volkswagen.es/es/modelos-configurador/golf-gte.html","VolkswagenPassatGTE","https://www.youtube.com/watch?v=MaR7kSTvAdE",43.3212533f,-2.9832281f,43.304587f,-3.0026767f);
+        Coche FordMondeo = new Coche(9,"Ford Mondeo Hybrid Sportbreak",36648,5,5,165,5.6f,550,1498,"Híbrido",10.3f,214,"https://www.ford.es/turismos/mondeo/modelos/trend","FordMondeo","https://www.youtube.com/watch?v=dgM-zikq3Rw",43.3232022f,-2.9755486f,43.2727254f,-2.9761362f);
         modelo.listadoCoches.add(AudiA1);
         modelo.listadoCoches.add(RenaultClio);
         modelo.listadoCoches.add(OpelCorsa);
