@@ -2,9 +2,11 @@
     <string name="app_name">ComparaCar</string>
     <string name="slogan">Porque la información es poder...</string>
 
-    <string name="title_activity_fullscreen">FullscreenActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="exitTitle">Salir</string>
+    <string name="exitMessage">¿Seguro que quieres salir de la apliación?</string>
+    <string name="dialog_confirm">Ok</string>
+    <string name="dialog_cancel">Cancelar</string>
 
-    <string name="title_activity_inicio">Inicio</string>
+
+    <string name="btnSeleccionar">Seleccionar</string>
 </resources>

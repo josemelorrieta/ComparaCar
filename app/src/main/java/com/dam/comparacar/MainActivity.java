@@ -158,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
             /*int idImagen = getResources().getIdentifier(coche.getImagen() , "drawable", getPackageName());
             coche.setImg(getResources().getDrawable(idImagen));*/
             modelo.listadoCoches.add(coche);
-            fila.moveToNext();
         }
 
         db.close();

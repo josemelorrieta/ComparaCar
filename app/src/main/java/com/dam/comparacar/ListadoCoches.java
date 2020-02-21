@@ -1,11 +1,14 @@
 package com.dam.comparacar;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
@@ -14,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -33,7 +37,7 @@ public class ListadoCoches extends AppCompatActivity {
 
         listaCoches.setAdapter(new CochesAdapter(modelo.listadoCoches));
         listaCoches.setLayoutManager(new LinearLayoutManager(this));
-        //listaCoches.setHasFixedSize(true);
+        listaCoches.setHasFixedSize(true);
 //        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
 //        listaCoches.addItemDecoration(itemDecoration);
 
@@ -66,7 +70,7 @@ public class ListadoCoches extends AppCompatActivity {
                 txtMotor = itemView.findViewById(R.id.txtMotor);
                 txtCombustible = itemView.findViewById(R.id.txtCombustible);
                 txtPrecio = itemView.findViewById(R.id.txtPrecio);
-
+                itemView.setOnClickListener(this);
             }
 
             @Override
@@ -77,6 +81,7 @@ public class ListadoCoches extends AppCompatActivity {
                     intent.putExtra("position", position);
                     startActivity(intent);*/
                 }
+                onClickItem(position);
             }
         }
 
@@ -131,5 +136,38 @@ public class ListadoCoches extends AppCompatActivity {
             return coches.size();
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(R.mipmap.alerta)
+                .setTitle(R.string.exitTitle)
+                .setMessage(R.string.exitMessage)
+                .setPositiveButton(R.string.dialog_confirm, new DialogInterface.OnClickListener() {
+                    DialogInterface.OnClickListener context = this;
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        salirAplicacion();
+                    }
+                })
+                .setNegativeButton(R.string.dialog_cancel, null)
+                .show();
+    }
+
+    public void salirAplicacion() {
+        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+        homeIntent.addCategory( Intent.CATEGORY_HOME );
+        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        ActivityCompat.finishAffinity(this);
+        startActivity(homeIntent);
+    }
+
+    public void seleccionarCoche(View view) {
+        Toast.makeText(this, "Seleccionado", Toast.LENGTH_SHORT).show();
+    }
+
+    private void onClickItem(int position) {
+        Toast.makeText(this, "Click en " + position, Toast.LENGTH_SHORT).show();
     }
 }
