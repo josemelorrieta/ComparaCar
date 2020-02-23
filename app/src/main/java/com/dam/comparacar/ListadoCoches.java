@@ -2,22 +2,25 @@ package com.dam.comparacar;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -25,6 +28,11 @@ import java.util.Locale;
 
 public class ListadoCoches extends AppCompatActivity {
     Modelo modelo;
+    ConstraintLayout lySeleccion;
+    FloatingActionButton fabComparar;
+    TextView txtCoche1, txtCoche2;
+    RecyclerView listaCoches;
+    ConstraintLayout lyContListado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +41,18 @@ public class ListadoCoches extends AppCompatActivity {
 
         modelo = (Modelo) getApplication();
 
-        RecyclerView listaCoches = findViewById(R.id.rvListadoCoches);
+        lySeleccion = findViewById(R.id.botonesSeleccion);
+        fabComparar = findViewById(R.id.fabComparar);
+        txtCoche1 = findViewById(R.id.txtSelec1);
+        txtCoche2 = findViewById(R.id.txtSelec2);
+        listaCoches = findViewById(R.id.rvListadoCoches);
+        lyContListado = findViewById(R.id.lyContListado);
+
+        fabComparar.setY(250);
 
         listaCoches.setAdapter(new CochesAdapter(modelo.listadoCoches));
         listaCoches.setLayoutManager(new LinearLayoutManager(this));
-        listaCoches.setHasFixedSize(true);
-//        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-//        listaCoches.addItemDecoration(itemDecoration);
+        listaCoches.setHasFixedSize(false);
 
     }
 
@@ -52,17 +65,12 @@ public class ListadoCoches extends AppCompatActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-            // Your holder should contain a member variable
-            // for any view that will be set as you render a row
             public ImageView imgCoche;
             public TextView txtModelo, txtMotor, txtCombustible, txtPrecio;
+            public Button btnSeleccionar;
             private Context context;
 
-            // We also create a constructor that accepts the entire item row
-            // and does the view lookups to find each subview
             public ViewHolder (Context context, View itemView) {
-                // Stores the itemView in a public final member variable that can be used
-                // to access the context from any ViewHolder instance.
                 super(itemView);
 
                 imgCoche = itemView.findViewById(R.id.imgCoche);
@@ -70,6 +78,8 @@ public class ListadoCoches extends AppCompatActivity {
                 txtMotor = itemView.findViewById(R.id.txtMotor);
                 txtCombustible = itemView.findViewById(R.id.txtCombustible);
                 txtPrecio = itemView.findViewById(R.id.txtPrecio);
+                btnSeleccionar = itemView.findViewById(R.id.btnSeleccionar);
+                btnSeleccionar.setOnClickListener(new onSeleccionarListener(this));
                 itemView.setOnClickListener(this);
             }
 
@@ -163,11 +173,69 @@ public class ListadoCoches extends AppCompatActivity {
         startActivity(homeIntent);
     }
 
-    public void seleccionarCoche(View view) {
-        Toast.makeText(this, "Seleccionado", Toast.LENGTH_SHORT).show();
+    private class onSeleccionarListener implements View.OnClickListener {
+        CochesAdapter.ViewHolder itemView;
+
+        public onSeleccionarListener(CochesAdapter.ViewHolder view) {
+            this.itemView = view;
+        }
+
+        @Override
+        public void onClick(View v) {
+            int pos = itemView.getAdapterPosition();
+
+            if(modelo.cochesSeleccionados.size() < 2) {
+                seleccionarCoche(pos);
+            } else {
+                mostrarMensajeSeleccionLlena();
+            }
+        }
+    }
+
+    private void seleccionarCoche(int pos) {
+        if (!modelo.cochesSeleccionados.contains(modelo.listadoCoches.get(pos))) {
+            modelo.cochesSeleccionados.add(modelo.listadoCoches.get(pos));
+            if (modelo.cochesSeleccionados.size() == 1) {
+                txtCoche1.setText(modelo.cochesSeleccionados.get(0).getModelo());
+            } else {
+                txtCoche2.setText(modelo.cochesSeleccionados.get(1).getModelo());
+                moverBola(0);
+            }
+        }
+    }
+
+    private void mostrarMensajeSeleccionLlena() {
+        Toast.makeText(this, R.string.msgSeleccionMasDeDos, Toast.LENGTH_SHORT).show();
     }
 
     private void onClickItem(int position) {
         Toast.makeText(this, "Click en " + position, Toast.LENGTH_SHORT).show();
+    }
+
+    private void moverBola(int pos) {
+        ObjectAnimator animation = ObjectAnimator.ofFloat(fabComparar, "translationY", pos);
+        animation.setDuration(500);
+        animation.start();
+    }
+
+    public void quitarCoche1 (View view) {
+        if (!txtCoche1.getText().equals("")) {
+            modelo.cochesSeleccionados.remove(0);
+            if(modelo.cochesSeleccionados.size() == 0) {
+                txtCoche1.setText("");
+            } else {
+                txtCoche1.setText(modelo.cochesSeleccionados.get(0).getModelo());
+                txtCoche2.setText("");
+                moverBola(250);
+            }
+        }
+    }
+
+    public void quitarCoche2 (View view) {
+        if (!txtCoche2.getText().equals("")) {
+            txtCoche2.setText("");
+            modelo.cochesSeleccionados.remove(1);
+            moverBola(250);
+        }
     }
 }

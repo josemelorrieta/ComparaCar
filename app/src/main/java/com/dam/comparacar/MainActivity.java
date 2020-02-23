@@ -22,25 +22,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        View decorView = getWindow().getDecorView();
-//        if (Build.VERSION.SDK_INT < 16) {
-//            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//        } else {
-//            // Hide the status bar.
-//            int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-//            decorView.setSystemUiVisibility(uiOptions);
-//
-//        }
         setContentView(R.layout.activity_main);
-// Remember that you should never show the action bar if the
-        // status bar is hidden, so hide that too if necessary.
-//        ActionBar actionBar = getActionBar();
-//        actionBar.hide();
-
-
 
         modelo = (Modelo) getApplication();
+        modelo.cochesSeleccionados.clear();
 
         AdministradorBDSQLite adminBD = new AdministradorBDSQLite(this, "ComparaCar", null, 1);
         SQLiteDatabase db = adminBD.getWritableDatabase();

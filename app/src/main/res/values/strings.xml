@@ -9,4 +9,5 @@
 
 
     <string name="btnSeleccionar">Seleccionar</string>
+    <string name="msgSeleccionMasDeDos">Solo se pueden seleccionar dos coches</string>
 </resources>
