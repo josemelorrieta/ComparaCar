@@ -1,13 +1,26 @@
 <resources>
+    <!-- GENERAL -->
     <string name="app_name">ComparaCar</string>
     <string name="slogan">Porque la información es poder...</string>
 
+    <!-- DIALOGO SALIDA -->
     <string name="exitTitle">Salir</string>
     <string name="exitMessage">¿Seguro que quieres salir de la apliación?</string>
     <string name="dialog_confirm">Ok</string>
     <string name="dialog_cancel">Cancelar</string>
 
-
+    <!-- LISTADO DE COCHES -->
     <string name="btnSeleccionar">Seleccionar</string>
     <string name="msgSeleccionMasDeDos">Solo se pueden seleccionar dos coches</string>
+
+    <!-- COMPARACIÓN DE COCHES -->
+    <string name="txtCilindrada">Cilindrada</string>
+    <string name="txtPotencia">Potencia</string>
+    <string name="txtCombustible">Combustible</string>
+    <string name="txtConsumo">Consumo</string>
+    <string name="txtAceleracion">Aceleración (0-100 Km/h)</string>
+    <string name="txtVelocidadMax">Velocidad máxima</string>
+    <string name="txtPlazas">Plazas</string>
+    <string name="txtPuertas">Puertas</string>
+    <string name="txtMaletero">Capacidad del Maletero</string>
 </resources>

@@ -1,15 +1,11 @@
 package com.dam.comparacar;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -26,8 +22,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class ListadoCoches extends AppCompatActivity {
-    Modelo modelo;
+public class ListadoCoches extends ActividadBase {
     ConstraintLayout lySeleccion;
     FloatingActionButton fabComparar;
     TextView txtCoche1, txtCoche2;
@@ -148,31 +143,6 @@ public class ListadoCoches extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setIcon(R.mipmap.alerta)
-                .setTitle(R.string.exitTitle)
-                .setMessage(R.string.exitMessage)
-                .setPositiveButton(R.string.dialog_confirm, new DialogInterface.OnClickListener() {
-                    DialogInterface.OnClickListener context = this;
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        salirAplicacion();
-                    }
-                })
-                .setNegativeButton(R.string.dialog_cancel, null)
-                .show();
-    }
-
-    public void salirAplicacion() {
-        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-        homeIntent.addCategory( Intent.CATEGORY_HOME );
-        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        ActivityCompat.finishAffinity(this);
-        startActivity(homeIntent);
-    }
-
     private class onSeleccionarListener implements View.OnClickListener {
         CochesAdapter.ViewHolder itemView;
 
@@ -237,5 +207,10 @@ public class ListadoCoches extends AppCompatActivity {
             modelo.cochesSeleccionados.remove(1);
             moverBola(250);
         }
+    }
+
+    public void comparar(View view) {
+        Intent intent = new Intent(this, ComparacionCoches.class);
+        startActivity(intent);
     }
 }

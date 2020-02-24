@@ -142,7 +142,7 @@ public class Coche {
         return velocidadMax;
     }
 
-    public void setVelocidadMax(int velociedadMax) {
+    public void setVelocidadMax(int velocidadMax) {
         this.velocidadMax = velocidadMax;
     }
 
