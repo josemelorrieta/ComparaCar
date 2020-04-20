@@ -63,7 +63,7 @@ public class ListadoCoches extends ActividadBase {
             public ImageView imgCoche;
             public TextView txtModelo, txtMotor, txtCombustible, txtPrecio;
             public Button btnSeleccionar;
-            private Context context;
+            public Context context;
 
             public ViewHolder (Context context, View itemView) {
                 super(itemView);
@@ -82,11 +82,12 @@ public class ListadoCoches extends ActividadBase {
             public void onClick(View view) {
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
-                    /*Intent intent = new Intent(context.getApplicationContext(), CocheDetalle.class);
-                    intent.putExtra("position", position);
-                    startActivity(intent);*/
+                  //  Intent intent = new Intent(this, DetallesCoche.class);
+                  //  intent.putExtra("position", position);
+                   // startActivity(intent);
+                    onClickItem(position);
                 }
-                onClickItem(position);
+
             }
         }
 
@@ -180,6 +181,9 @@ public class ListadoCoches extends ActividadBase {
 
     private void onClickItem(int position) {
         Toast.makeText(this, "Click en " + position, Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(this,DetallesCoche.class);
+        i.putExtra("position",position);
+        startActivity(i);
     }
 
     private void moverBola(int pos) {

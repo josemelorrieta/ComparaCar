@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dam.comparacar">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".Modelo"
         android:allowBackup="true"
@@ -9,8 +11,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+
         android:theme="@style/AppTheme">
-        <activity android:name=".ComparacionCoches"></activity>
+        <activity android:name=".DetallesCoche"></activity>
+        <activity android:name=".ComparacionCoches" />
         <activity android:name=".ListadoCoches" />
         <activity
             android:name=".MainActivity"

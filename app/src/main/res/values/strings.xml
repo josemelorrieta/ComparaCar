@@ -23,4 +23,11 @@
     <string name="txtPlazas">Plazas</string>
     <string name="txtPuertas">Puertas</string>
     <string name="txtMaletero">Capacidad del Maletero</string>
+
+    <!-- DETALLES DEL COCHE -->
+    <string name="txtModelo">Modelo</string>
+    <string name="txtPrecio">Precio</string>
+    <string name="txtUrl">Url</string>
+    <string name="txtTituloDetalles">Ficha Técnica Del Vehículo</string>
+
 </resources>
