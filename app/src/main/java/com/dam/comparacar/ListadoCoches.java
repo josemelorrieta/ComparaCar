@@ -180,7 +180,6 @@ public class ListadoCoches extends ActividadBase {
     }
 
     private void onClickItem(int position) {
-        Toast.makeText(this, "Click en " + position, Toast.LENGTH_SHORT).show();
         Intent i = new Intent(this,DetallesCoche.class);
         i.putExtra("position",position);
         startActivity(i);

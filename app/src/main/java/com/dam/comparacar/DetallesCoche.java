@@ -5,18 +5,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerView;
+
 import java.util.ArrayList;
 
-public class DetallesCoche extends AppCompatActivity {
+public class DetallesCoche extends YouTubeBaseActivity {
 
     TextView modelo,aceleracion,velociedadMax,cilindrada,consumo,maletero,plazas,potencia,puertas,precio,tipocombustible,url;
     Modelo mod;
-    VideoView vV;
+    YouTubePlayerView video;
     MediaController ctlr;
+    int dato;
+    String videoUrl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +34,7 @@ public class DetallesCoche extends AppCompatActivity {
         mod = (Modelo) getApplication();
 
         Bundle bundle = getIntent().getExtras();
-        int dato = bundle.getInt("position");
+        dato = bundle.getInt("position");
 
         modelo=(TextView)findViewById(R.id.textView19);
         precio=(TextView)findViewById(R.id.textView20);
@@ -37,6 +47,12 @@ public class DetallesCoche extends AppCompatActivity {
         plazas=(TextView)findViewById(R.id.textView27);
         maletero=(TextView)findViewById(R.id.textView28);
         puertas=(TextView)findViewById(R.id.textView31);
+        video = (YouTubePlayerView) findViewById(R.id.videoView);
+
+        videoUrl = mod.listadoCoches.get(dato).getVideo();
+        String videoId = videoUrl.substring(videoUrl.lastIndexOf("=") + 1);
+
+        playVideo(videoId, video);
 
        // url=(TextView)findViewById(R.id.textView30);
 
@@ -55,6 +71,7 @@ public class DetallesCoche extends AppCompatActivity {
         puertas.setText( String.valueOf(mod.listadoCoches.get(dato).getPuertas()));
 
 
+
       //  url.setText( mod.listadoCoches.get(dato).getUrl());
 
         //modelo.setText( mod.listadoCoches.get(dato).getVideo());
@@ -68,6 +85,24 @@ public class DetallesCoche extends AppCompatActivity {
         vV.setVideoURI(uri);
         vV.requestFocus();
         vV.start();*/
+    }
+
+    public void playVideo(final String videoId, YouTubePlayerView youTubePlayerView) {
+        //initialize youtube player view
+        youTubePlayerView.initialize("AIzaSyBqpFie1n0_l1Xj95bgy9P6LVev9nCcnK4",
+                new YouTubePlayer.OnInitializedListener() {
+                    @Override
+                    public void onInitializationSuccess(YouTubePlayer.Provider provider,
+                                                        YouTubePlayer youTubePlayer, boolean b) {
+                        youTubePlayer.cueVideo(videoId);
+                    }
+
+                    @Override
+                    public void onInitializationFailure(YouTubePlayer.Provider provider,
+                                                        YouTubeInitializationResult youTubeInitializationResult) {
+
+                    }
+                });
     }
 
 
