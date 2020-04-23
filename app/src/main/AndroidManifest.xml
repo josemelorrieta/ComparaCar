@@ -13,7 +13,8 @@
         android:supportsRtl="true"
 
         android:theme="@style/AppTheme">
-        <activity android:name=".DetallesCoche"></activity>
+        <activity android:name=".DetallesCoche"
+            android:configChanges="keyboardHidden|orientation|screenSize"></activity>
         <activity android:name=".ComparacionCoches" />
         <activity android:name=".ListadoCoches" />
         <activity
