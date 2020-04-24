@@ -20,14 +20,16 @@ public class Coche {
     private String url;
     private String video;
     private String imagen;
+    private String concesionario1;
     private float lat1;
     private float long1;
+    private String concesionario2;
     private float lat2;
     private float long2;
 
     public Coche(){ }
 
-    public Coche(int id, String modelo,int precio, int puertas, int plazas, int potencia, float consumo, int maletero, int cilindrada, String tipoCombustible, float aceleracion, int velocidadMax, String url, String imagen, String video, float lat1, float long1, float lat2, float long2) {
+    public Coche(int id, String modelo,int precio, int puertas, int plazas, int potencia, float consumo, int maletero, int cilindrada, String tipoCombustible, float aceleracion, int velocidadMax, String url, String imagen, String video, String concesionario1, float lat1, float long1, String concesionario2, float lat2, float long2) {
         this.id = id;
         this.modelo = modelo;
         this.precio = precio;
@@ -43,8 +45,10 @@ public class Coche {
         this.url = url;
         this.imagen = imagen;
         this.video = video;
+        this.concesionario1 = concesionario1;
         this.lat1 = lat1;
         this.lat2 = lat2;
+        this.concesionario2 = concesionario2;
         this.long1 = long1;
         this.long2 = long2;
     }
@@ -170,6 +174,14 @@ public class Coche {
         this.video = video;
     }
 
+    public String getConcesionario1 () {
+        return this.concesionario1;
+    }
+
+    public void setConcesionario1(String concesionario1) {
+        this.concesionario1 = concesionario1;
+    }
+
     public float getLat1() {
         return lat1;
     }
@@ -184,6 +196,14 @@ public class Coche {
 
     public void setLong1(float long1) {
         this.long1 = long1;
+    }
+
+    public String getConcesionario2 () {
+        return this.concesionario2;
+    }
+
+    public void setConcesionario2(String concesionario2) {
+        this.concesionario1 = concesionario2;
     }
 
     public float getLat2() {

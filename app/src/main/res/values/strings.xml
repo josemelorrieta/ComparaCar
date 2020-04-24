@@ -29,5 +29,9 @@
     <string name="txtPrecio">Precio</string>
     <string name="txtUrl">Url</string>
     <string name="txtTituloDetalles">Ficha Técnica Del Vehículo</string>
+    <string name="btnDondeComprar">Dónde comprar</string>
+    <string name="title_activity_donde_comprar">Map</string>
+
+    <string name="google_maps_key"></string>
 
 </resources>
