@@ -11,7 +11,7 @@ public class AdministradorBDSQLite extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table coches(id int primary key,modelo text, precio int, puertas int, plazas int, potencia int, consumo real, maletero int, cilindrada int, tipoCombustible text, aceleracion real, velocidadMax int, url text, imagen text, video text, lat1 real, long1 real, lat2 real, long2 real)" );
+        db.execSQL("create table coches(id int primary key,modelo text, precio int, puertas int, plazas int, potencia int, consumo real, maletero int, cilindrada int, tipoCombustible text, aceleracion real, velocidadMax int, url text, imagen text, video text, concesionario1 text, lat1 real, long1 real, concesionario2 text, lat2 real, long2 real)" );
     }
 
     @Override
