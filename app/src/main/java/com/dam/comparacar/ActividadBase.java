@@ -34,6 +34,8 @@ public class ActividadBase extends AppCompatActivity {
 
         switch (id) {
             case R.id.acercaDe:
+                Intent i = new Intent(this, AcercaDe.class);
+                startActivity(i);
                 break;
             case android.R.id.home:
                 onBackPressed();
